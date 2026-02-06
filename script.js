@@ -331,16 +331,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function fadeOutMusic() {
+        // iOS Hack: Volume property is often read-only on iPhone.
+        // We cannot rely on checking (volume > 0) to stop the music.
+        // We must force a stop after the expected duration.
+        
+        let steps = 10; // 10 steps * 400ms = 4 seconds duration
+        
         const fadeInterval = setInterval(() => {
-            if(bgMusic.volume > 0.05) {
-                bgMusic.volume -= 0.05;
-            } else {
-                bgMusic.volume = 0;
+            steps--;
+
+            // Try to lower volume (works on Desktop/Android)
+            // On iOS this might do nothing, but it won't break
+            if(bgMusic.volume >= 0.05) {
+                try {
+                    bgMusic.volume -= 0.05;
+                } catch(e) {
+                    // Ignore errors if volume is locked
+                }
+            }
+
+            // Hard stop when time is up
+            if (steps <= 0) {
                 bgMusic.pause();
                 bgMusic.currentTime = 0;
+                // Reset volume for next time (if supported)
+                try { bgMusic.volume = 0.3; } catch(e) {}
                 clearInterval(fadeInterval);
             }
-        }, 400); // Slower fade out (approx 4s)
+        }, 400); 
     }
 
     function resetExperience() {
