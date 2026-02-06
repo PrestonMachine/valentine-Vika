@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Вікторії ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+        <div class="glass-panel" id="mainCard">
+            <div class="content hidden" id="messageContent">
+                <h1 class="title">З Днем Закоханих<br><span class="highlight">Вікуся</span></h1>
+                <p class="text">
+                    Ти — особлива історія в моєму житті.<br>
+                    Кожен момент з тобою — це подарунок, цінніший за будь-що.<br>
+                    Ми ще тільки починаємо, але моє серце вже знає правду.
+                </p>
+                <div class="interactive-section">
+                    <button id="reasonBtn" class="love-btn">Чому ти?</button>
+                    <p id="reasonDisplay" class="reason-text"></p>
+                </div>
+                <div class="signature">
+                    <p>З любов'ю ❤️</p>
+                </div>
+            </div>
+            
+            <div class="cover" id="cardCover">
+                <div class="heart-pulse">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <p class="click-hint">Натисни, щоб відкрити</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="proposalModal" class="proposal-modal hidden">
+        <div class="proposal-content">
+            <h1 class="proposal-text">Віка, я тебе дуже сильно кохаю ❤️</h1>
+            <p class="proposal-subtext">Ти станеш моєю дівчиною?</p>
+            <div class="buttons-container">
+                <button id="yesBtn" class="love-btn yes-btn">ТАК!</button>
+                <button id="noBtn" class="love-btn no-btn">НІ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="kissOverlay" class="kiss-overlay hidden">
+        <span class="huge-kiss">💋</span>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="song_short.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
